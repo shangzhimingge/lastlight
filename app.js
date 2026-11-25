@@ -1,5 +1,5 @@
 const body = document.body;
-const storageKey = "lastlight-returned-v2";
+const storageKey = "lastlight-returned-v3";
 const dateFormat = new Intl.DateTimeFormat("zh-CN", {
   hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"
 });
@@ -21,7 +21,12 @@ const finalCaption = document.querySelector("#final-caption");
 const finalTitle = document.querySelector("#final-title");
 const playbackTime = document.querySelector("#playback-time");
 const audioButton = document.querySelector("#audio-button");
+const packPicker = document.querySelector("#pack-picker");
+const orderButton = document.querySelector("#order-button");
+const orderActionLabel = document.querySelector("#order-action-label");
+const orderTotal = document.querySelector("#order-total");
 const orderDialog = document.querySelector("#order-dialog");
+const kitList = document.querySelector("#kit-list");
 const replacements = Array.from(document.querySelectorAll("[data-after]"), element => ({
   element, initial: Array.from(element.childNodes, node => node.cloneNode(true))
 }));
@@ -108,6 +113,17 @@ function showMode(mode) {
   modeButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.mode === mode)));
 }
 
+function selectedPack() {
+  return packPicker.querySelector("input:checked");
+}
+
+function updateOrder() {
+  packPicker.disabled = returned;
+  orderTotal.querySelector("span").textContent = returned ? "签收状态" : "套装参考价";
+  orderTotal.querySelector("strong").textContent = returned ? "已签收" : "¥" + selectedPack().dataset.price;
+  orderActionLabel.textContent = returned ? "查看签收记录" : "查看套装清单";
+}
+
 function setReturned(value) {
   returned = value;
   body.toggleAttribute("data-returned", value);
@@ -116,8 +132,7 @@ function setReturned(value) {
     if (value) element.textContent = element.dataset.after;
     else element.replaceChildren(...initial.map(node => node.cloneNode(true)));
   });
-  const order = document.querySelector("#order-button");
-  order.firstChild.nodeValue = value ? "查看签收记录 " : "查看购买信息 ";
+  updateOrder();
   try {
     if (value) sessionStorage.setItem(storageKey, "1");
     else sessionStorage.removeItem(storageKey);
@@ -222,11 +237,15 @@ async function stopSound() {
 }
 
 modeButtons.forEach(button => button.addEventListener("click", () => showMode(button.dataset.mode)));
-document.querySelector("#order-button").addEventListener("click", () => {
-  document.querySelector("#order-dialog-title").textContent = returned ? "无需再次下单" : "暖胡桃木套装";
+packPicker.addEventListener("change", updateOrder);
+orderButton.addEventListener("click", () => {
+  const pack = selectedPack();
+  document.querySelector("#order-dialog-title").textContent = returned ? "有人替你签收了" : pack.dataset.title;
   document.querySelector("#order-dialog-text").textContent = returned
-    ? "灯已在玄关。签收记录显示有人替你开了门。"
-    : "含灯体、磁吸底座、免钉贴和 USB-C 充电线。参考售价 ¥169。";
+    ? "一个包裹。开门记录有两次，间隔七秒。"
+    : "参考价 ¥" + pack.dataset.price;
+  kitList.hidden = returned;
+  kitList.querySelectorAll("dd").forEach(count => { count.textContent = "×" + pack.value; });
   orderDialog.showModal();
 });
 
@@ -255,6 +274,7 @@ document.querySelector("#reset").addEventListener("click", () => {
   history.replaceState(null, "", location.pathname + location.search);
   deepest = 0;
   currentMode = "day";
+  packPicker.querySelector('input[value="1"]').checked = true;
   signalStarted = Date.now();
   updateEvents();
   setReturned(false);
@@ -273,6 +293,7 @@ try {
   // The experience still works when tab storage is disabled.
 }
 updateEvents();
+updateOrder();
 tick();
 setInterval(tick, 1000);
 scheduleRender();
