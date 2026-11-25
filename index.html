@@ -7,8 +7,8 @@
   <meta name="description" content="归昼 L1，无需布线的玄关感应灯。为晚归的人留一盏灯。">
   <title>归昼 Lastlight · 为晚归的人留一盏灯</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232e3b32'/%3E%3Ccircle cx='20' cy='18' r='8' fill='%23ffc486'/%3E%3Cpath d='M15 30h10' stroke='%23ffc486' stroke-width='2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css">
-  <script src="./app.js" defer></script>
+  <link rel="stylesheet" href="./style.css?v=2">
+  <script src="./app.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip" href="#home">跳到正文</a>
@@ -54,6 +54,18 @@
       </div>
     </section>
 
+    <section class="setup" id="setup" aria-labelledby="setup-title">
+      <div class="wrap section-space">
+        <p class="kicker">首次安装</p>
+        <div class="setup-head"><h2 id="setup-title">走一遍你每天走的路。</h2><p class="body-copy">晚上安装好以后，照平常的方式开门、放钥匙，最后走进客厅。看一看灯是不是刚好亮到你走完这段路。</p></div>
+        <ol class="setup-steps">
+          <li><strong>装在门内</strong><p>在门边挑一块平整的墙面，把底座固定在伸手够得到的高度。</p></li>
+          <li><strong>让灯亮一次</strong><p>关掉顶灯，从门口走向客厅。动作信号只覆盖玄关一带。</p></li>
+          <li><strong>在客厅等 20 秒</strong><p data-after="距离上一次活动已过去 20 秒。玄关信号没有清除。">玄关空下来以后，L1 会自动熄灯。可以重复一遍，确认这个位置合适。</p></li>
+        </ol>
+      </div>
+    </section>
+
     <section class="scenes section-space" id="scenes" aria-labelledby="scenes-title">
       <div class="wrap">
         <p class="kicker">使用场景</p>
@@ -95,50 +107,72 @@
 
     <section class="support section-space" id="support" aria-labelledby="support-title">
       <div class="wrap support-grid">
-        <div><p class="kicker">产品支持</p><h2 id="support-title">有些灯，<br>一直亮着。</h2><p class="body-copy">若灯持续亮起，请按以下顺序排查。</p></div>
+        <div><p class="kicker">产品支持</p><h2 id="support-title">灯迟迟没熄？</h2><p class="body-copy">关上前门，再到客厅等一会儿。如果灯一直亮着，可以先排查这几种情况。</p></div>
         <div class="faq">
           <details><summary>为什么关门后灯还亮着？</summary><p>关门后还有人站在约 3 米的感应范围内，延时会重新计时。最后一人离开后，灯会在 20 秒内熄灭。</p></details>
-          <details><summary>一个人住，为什么会感应到两次？</summary><p>请从玄关离开一次，等待指示灯熄灭。若指示灯仍然亮着，请查看下方的感应记录。</p></details>
-          <details><summary>我已经拔掉电源，为什么它还亮着？</summary><p>灯体内置电池。如果你已经把灯体一并取下，但墙上仍有光，请保持前门关闭，继续查看设备记录。</p></details>
+          <details><summary>扫地机器人经过也会亮吗？</summary><p>有可能。让机器人在充电座上停一晚，再看看同一时间是否还会触发。</p></details>
+          <details><summary>自己一个人在家，为什么灯每次亮两遍？</summary><p>看一下两条记录之间隔了多久。如果你走出玄关后才出现第二条，可以把这个间隔告诉售后。</p></details>
         </div>
+      </div>
+    </section>
+
+    <section class="case" id="case" aria-labelledby="case-title">
+      <div class="wrap section-space">
+        <p class="kicker">售后回访 / L1-047</p>
+        <div class="case-head"><h2 id="case-title">第二次亮灯，比第一次晚七秒。</h2><p class="body-copy">同一位住户连续三晚测到七秒。他把安装那天走过的路线又走了一遍。</p></div>
+        <ol class="case-trail" aria-label="售后回访记录">
+          <li><span>第一次回访</span><p>客服请他暂停扫地机器人。第二次亮灯仍然出现。</p></li>
+          <li><span>第二次回访</span><p>住户在客厅看到灯亮起，随后听见玄关地垫响了一声。那块地垫卷了边，踩上去会擦过门底。</p></li>
+          <li><span>今晚的复测</span><p>他反锁前门，在门缝上贴了一条纸胶带。手机架在走廊口，镜头对着门。他留在客厅跟客服通话。</p></li>
+        </ol>
       </div>
     </section>
 
     <section class="diagnostic" id="diagnostic" aria-labelledby="diagnostic-title">
       <div class="wrap section-space">
-        <div class="diagnostic-head"><div><p class="kicker signal"><span></span> L1 设备记录</p><h2 id="diagnostic-title">最后一人尚未离开。</h2></div><time data-clock>--:--:--</time></div>
-        <p class="body-copy">熄灯计时仅在玄关无人停留时开始。</p>
+        <div class="diagnostic-head"><div><p class="kicker signal"><span></span> 复测 / 灯体感应记录</p><h2 id="diagnostic-title">计时停在了 20 秒。</h2></div><time data-clock>--:--:--</time></div>
+        <p class="body-copy">住户刚走出感应范围，玄关里就有另一个信号接了上来。</p>
         <dl class="census"><div><dt>登记住户</dt><dd>01</dd></div><div><dt>活动信号</dt><dd>02</dd></div><div><dt>熄灯计时</dt><dd>00:20 <small>等待中</small></dd></div></dl>
-        <ol class="event-log" aria-label="最近四条记录">
-          <li><time data-offset="-59">--:--:--</time><span>前门关合</span><small>住户 01 进入</small></li>
-          <li><time data-offset="-41">--:--:--</time><span>灯体移除</span><small>住户 01 已离开玄关</small></li>
-          <li><time data-offset="-16">--:--:--</time><span>检测到新的活动信号</span><small>前门仍然关闭</small></li>
-          <li><time data-offset="-4">--:--:--</time><span>第二个信号开始移动</span><small>方向：门内 → 浏览端</small></li>
+        <ol class="event-log" aria-label="复测的四条记录">
+          <li><time data-offset="-59">--:--:--</time><span>拍下门锁照片</span><small>住户备注：已反锁</small></li>
+          <li><time data-offset="-41">--:--:--</time><span>感应信号 01</span><small>从玄关向客厅移动</small></li>
+          <li><time data-offset="-34">--:--:--</time><span>感应信号 02</span><small>位置：玄关，前门内侧</small></li>
+          <li><time data-offset="-12">--:--:--</time><span>灯体持续亮起</span><small>信号 02 仍在感应范围内</small></li>
         </ol>
+      </div>
+    </section>
+
+    <section class="check" aria-labelledby="check-title">
+      <div class="wrap section-space check-grid">
+        <figure class="check-photo"><img src="./lock-check.webp" width="1200" height="800" loading="lazy" alt="复测前的门锁照片，纸胶带完整地跨过关闭的门缝"><figcaption><span>手机照片 / 复测前</span><time data-offset="-59">--:--:--</time></figcaption></figure>
+        <div class="check-copy"><p class="kicker signal">住户提供的照片</p><h2 id="check-title">拍这张照片的时候，门是锁着的。</h2><p class="body-copy">纸胶带横着贴在门和门框之间。两端都压平了。</p><p class="body-copy">手机录下的第一声很轻。像是胶带从墙上揭起来的声音。</p></div>
       </div>
     </section>
 
     <section class="night" id="night" aria-labelledby="night-title">
       <div class="wrap night-inner">
-        <p class="kicker signal"><span></span> 最后一次熄灯测试</p>
-        <h2 id="night-title">请退到感应范围外。</h2>
-        <p>门口的灯会留给还在里面的人。</p>
-        <figure class="night-photo"><img src="./entry-night.webp" width="768" height="1024" loading="lazy" alt="深夜的玄关，入户门开了一条缝"><figcaption><span>玄关 01 / 无人签入</span><time data-clock>--:--:--</time></figcaption></figure>
-        <div class="night-footer"><span>剩余距离 <b id="distance">3.0 m</b></span><button id="audio-button" type="button" aria-pressed="false">开启环境声</button></div>
+        <p class="kicker signal"><span></span> 手机录像 / 截帧</p>
+        <h2 id="night-title">门底漏进来一点光。</h2>
+        <p>住户后来回看录像，才发现门往屋里开了一点。门把手一直是平的。</p>
+        <figure class="night-photo"><img src="./entry-night.webp" width="768" height="1024" loading="lazy" alt="深夜的玄关，入户门开了一条缝"><figcaption><span>录像截帧 / 客厅里仍有人说话</span><time data-offset="-10">--:--:--</time></figcaption></figure>
+        <div class="night-footer"><span>手机录像 · <b>最后 10 秒</b></span><button id="audio-button" type="button" aria-pressed="false">开启环境声</button></div>
       </div>
     </section>
 
     <section class="finale" id="finale" aria-labelledby="final-title">
       <div class="final-sticky">
-        <img id="final-image" src="./threshold.webp" width="1536" height="1024" loading="lazy" alt="门缝中有人站在黑暗里，朝玄关张望">
+        <div class="final-frames">
+          <img src="./entry-night.webp" width="768" height="1024" loading="lazy" alt="">
+          <img id="final-image" src="./threshold-v2.webp" width="990" height="1320" loading="lazy" alt="">
+        </div>
         <div class="final-shade"></div>
-        <div class="monitor"><span><i></i> 玄关 01 / 仍在感应</span><time data-clock>--:--:--</time></div>
-        <div class="final-copy"><p id="final-caption">感应范围&nbsp; 0.0 m</p><h2 id="final-title">它已经在门里了。</h2></div>
+        <div class="monitor"><span><i></i> 手机录像 / 玄关</span><time id="playback-time" data-offset="-10">--:--:--</time></div>
+        <div class="final-copy"><p id="final-caption">00:00 / 灯光感应中</p><h2 id="final-title">门停了一下。</h2></div>
       </div>
     </section>
 
     <footer class="end">
-      <p>关门记录已保存。</p>
+      <p>住户一侧的声音到这里就断了。</p>
       <h2 data-after="灯还亮着。">归昼 Lastlight</h2>
       <div><a class="button light" href="#home" id="return">返回品牌首页 ↑</a><button id="reset" class="text-button" type="button">重新体验</button></div>
       <small>归昼 / LASTLIGHT</small>

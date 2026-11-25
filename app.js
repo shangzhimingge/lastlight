@@ -1,5 +1,5 @@
 const body = document.body;
-const storageKey = "lastlight-returned";
+const storageKey = "lastlight-returned-v2";
 const dateFormat = new Intl.DateTimeFormat("zh-CN", {
   hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"
 });
@@ -16,9 +16,10 @@ const sceneDescription = document.querySelector("#scene-description");
 const sceneStatus = document.querySelector("#scene-status");
 const night = document.querySelector("#night");
 const finale = document.querySelector("#finale");
+const finalStage = finale.querySelector(".final-sticky");
 const finalCaption = document.querySelector("#final-caption");
 const finalTitle = document.querySelector("#final-title");
-const distance = document.querySelector("#distance");
+const playbackTime = document.querySelector("#playback-time");
 const audioButton = document.querySelector("#audio-button");
 const orderDialog = document.querySelector("#order-dialog");
 const replacements = Array.from(document.querySelectorAll("[data-after]"), element => ({
@@ -44,12 +45,19 @@ const presets = {
     status: "延时 20 秒"
   }
 };
+const playbackCues = [
+  { at: 0, note: "灯光感应中", title: "门停了一下。" },
+  { at: 3, note: "第二次亮灯", title: "客厅那边还在说话。" },
+  { at: 6, note: "门内侧 / 检测到活动", title: "门后有个人。" },
+  { at: 9, note: "录像最后一帧", title: "他在看手机。" }
+];
 
 let currentMode = "day";
 let appliedHero = "";
 let signalStarted = Date.now();
 let returned = false;
 let deepest = 0;
+let lastPlaybackSecond = -1;
 let frame = 0;
 let sound;
 
@@ -69,8 +77,8 @@ function updateHero(hour) {
   if (appliedHero === appearance) return;
   appliedHero = appearance;
   heroImage.closest("figure").dataset.time = appearance;
-  heroImage.src = asset(appearance === "occupied" ? "threshold" : appearance === "night" ? "entry-night" : "entry-day");
-  heroImage.alt = returned ? "玄关门缝中出现一个凝视镜头的身影" : "归昼 L1 安装在玄关入户门旁";
+  heroImage.src = asset(appearance === "occupied" ? "threshold-v2" : appearance === "night" ? "entry-night" : "entry-day");
+  heroImage.alt = returned ? "半开的入户门后，有人看向手机镜头" : "归昼 L1 安装在玄关入户门旁";
   heroLabel.textContent = { day: "日间光线", dusk: "傍晚光线", night: "夜间光线", occupied: "检测到 2 个信号" }[appearance];
 }
 
@@ -81,6 +89,7 @@ function tick() {
 }
 
 function updateEvents() {
+  lastPlaybackSecond = -1;
   document.querySelectorAll("[data-offset]").forEach(element => {
     displayTime(element, signalStarted + Number(element.dataset.offset) * 1000);
   });
@@ -91,7 +100,7 @@ function showMode(mode) {
   currentMode = mode;
   scene.dataset.mode = mode;
   const occupied = returned && mode === "night";
-  sceneImage.src = asset(occupied ? "threshold" : mode === "night" ? "entry-night" : "entry-day");
+  sceneImage.src = asset(occupied ? "threshold-v2" : mode === "night" ? "entry-night" : "entry-day");
   sceneTitle.textContent = occupied ? "二十秒从未开始。" : preset.title;
   sceneDescription.textContent = occupied ? "灯在等你们两个都离开。" : preset.description;
   sceneCaption.textContent = occupied ? "夜间模式 / 第二位住户已识别" : preset.caption;
@@ -123,23 +132,33 @@ function clamp(value) {
   return Math.min(1, Math.max(0, value));
 }
 
+function renderPlayback(progress) {
+  const occupant = clamp((progress - .40) / .39);
+  const easedOccupant = occupant * occupant * (3 - 2 * occupant);
+  finalStage.style.setProperty("--zoom", (1 + progress * .12).toFixed(3));
+  finalStage.style.setProperty("--reveal", (.92 + progress * .13).toFixed(3));
+  finalStage.style.setProperty("--occupancy", easedOccupant.toFixed(3));
+  const second = Math.floor(progress * 10);
+  if (second === lastPlaybackSecond) return;
+  lastPlaybackSecond = second;
+  const cue = playbackCues.findLast(item => item.at <= second);
+  displayTime(playbackTime, signalStarted + (second - 10) * 1000);
+  finalCaption.textContent = "00:" + String(second).padStart(2, "0") + " / " + cue.note;
+  if (finalTitle.textContent !== cue.title) finalTitle.textContent = cue.title;
+}
+
 function renderScroll() {
   frame = 0;
   const height = window.innerHeight;
   const nightBounds = night.getBoundingClientRect();
   const finalBounds = finale.getBoundingClientRect();
-  const approach = clamp((height * .33 - nightBounds.top) / Math.max(1, nightBounds.height * .75));
-  const progress = clamp(-finalBounds.top / Math.max(1, finalBounds.height - height));
+  const progress = clamp(-finalBounds.top / Math.max(1, finalBounds.height - finalStage.offsetHeight));
   const endingVisible = finalBounds.top < height && finalBounds.bottom > 0;
   if (endingVisible) deepest = Math.max(deepest, progress);
-  distance.textContent = (3 * (1 - approach)).toFixed(1) + " m";
-  finale.style.setProperty("--zoom", (1 + progress * .46).toFixed(3));
-  finale.style.setProperty("--reveal", (.60 + progress * .53).toFixed(3));
-  finalCaption.textContent = progress > .64 ? "信号 02 / 与浏览端重合" : "感应范围  0.0 m";
-  finalTitle.textContent = progress > .64 ? "它一直在等你转身。" : "它已经在门里了。";
-  if (!returned && deepest >= .68) setReturned(true);
+  renderPlayback(progress);
+  if (!returned && deepest >= .89) setReturned(true);
   if (sound) {
-    const level = document.hidden ? 0 : endingVisible ? .046 + progress * .038 : nightBounds.top < height && nightBounds.bottom > 0 ? .024 : 0;
+    const level = document.hidden ? 0 : endingVisible ? .024 + progress * .041 : nightBounds.top < height && nightBounds.bottom > 0 ? .024 : 0;
     sound.volume.gain.setTargetAtTime(level, sound.context.currentTime, .26);
   }
 }
