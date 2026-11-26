@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f1">
+  <meta name="description" content="迁里搬家 MILEMOVE，成都同城搬家服务。了解搬家方案，算算这一趟的费用，跟着一张回单看物品怎样到家。">
+  <title>迁里搬家 MILEMOVE · 成都同城搬家</title>
+  <link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="./assets/fleet.webp">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="m3 7 9-4.5L21 7v10l-9 4.5L3 17Zm0 0 9 4.5L21 7m-9 4.5v10m-4.5-17 9 4.7v4.3"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 5h12v12H2zm12 5h4l4 4v3h-8"/><circle cx="6" cy="18.5" r="2"/><circle cx="18.5" cy="18.5" r="2"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5 3h14v18l-2-1.4-2.4 1.4-2.6-1.4L9.5 21l-2.4-1.4L5 21Zm3.5 4.5h7m-7 4H16m-7.5 4H13"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zm13-1c2 2 2 6 0 8m3-11c4 4 4 10 0 14"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zm13 1 5 5m0-5-5 5"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V4h5m6 0h5v5m0 6v5h-5M9 20H4v-5"/></symbol>
+  </svg>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="site-header" id="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="迁里搬家，返回首页"><span class="brand-mark" aria-hidden="true"></span><span class="brand-word">迁里搬家<span>MILEMOVE</span></span></a>
+      <nav class="nav" id="nav" aria-label="主导航">
+        <a href="#services">搬家方案</a><a href="#process">服务流程</a><a href="#questions">常见问题</a><a href="#case-file">搬家实录</a>
+      </nav>
+      <div class="header-actions"><a class="nav-quote" href="#estimate">免费估价</a><button type="button" class="menu-toggle" aria-label="展开导航" aria-expanded="false" aria-controls="nav"><span></span><span></span></button></div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="mini-rule"></span><span id="hero-place">成都同城搬家服务</span></p>
+          <h1 id="hero-title"><span id="hero-first">把日子，</span><strong id="hero-last">搬到新家<span class="fullstop">。</span></strong></h1>
+          <p class="hero-intro" id="hero-intro">从第一卷封箱胶带，到最后一只箱子进门。<br>打包、搬运、归位，这一路交给迁里。</p>
+          <div class="hero-buttons"><a class="button primary" id="hero-cta" href="#estimate">算算搬家费用</a><a class="button outline" id="hero-secondary" href="#services">看看服务方案</a><button class="button outline" id="hero-replay" type="button" data-replay hidden>重新体验</button></div>
+          <p class="service-hours"><svg class="icon"><use href="#i-clock"/></svg><span id="hours-text">每日服务时间</span><b id="hours-value">08:00 – 20:00</b></p>
+        </div>
+        <figure class="hero-gallery">
+          <div class="hero-photo">
+            <img id="hero-image" src="./assets/fleet.webp" width="1536" height="1024" alt="午后的成都街道上，一辆蓝白色迁里搬家货车停在树荫下" fetchpriority="high">
+            <div class="dispatch-label" aria-hidden="true"><div class="dispatch-label-head"><b>迁里派车联</b><span class="double-slash">//</span></div><strong id="dispatch-code">CD–018</strong><span class="barcode"></span><div class="dispatch-label-foot"><span>MILEMOVE</span><span id="dispatch-kind">同城专车</span></div></div>
+          </div>
+          <figcaption class="gallery-caption"><div class="gallery-description" aria-live="polite"><svg class="icon"><use href="#i-pin"/></svg><span id="gallery-label">成都 · 车队街拍</span></div><div class="gallery-controls"><span class="counter" id="gallery-counter">01 / 03</span><button type="button" class="icon-button" id="gallery-prev" aria-label="上一张车队照片"><svg class="icon"><use href="#i-left"/></svg></button><button type="button" class="icon-button" id="gallery-next" aria-label="下一张车队照片"><svg class="icon"><use href="#i-right"/></svg></button></div></figcaption>
+        </figure>
+      </div>
+    </section>
+    <div class="value-strip"><div class="shell values">
+      <div><svg class="line-icon"><use href="#i-truck"/></svg><p><b>一车一户</b><span>同一辆车，直接送到家</span></p></div>
+      <div><svg class="line-icon"><use href="#i-box"/></svg><p><b>一箱一码</b><span id="promise-count">装车和签收都按箱点数</span></p></div>
+      <div><svg class="line-icon"><use href="#i-receipt"/></svg><p><b>费用先讲清</b><span>里程和楼层，逐项看明白</span></p></div>
+    </div></div>
+
+    <section class="section shell" id="services" aria-labelledby="services-title">
+      <div class="section-head"><div><p class="kicker">搬家方案 <i></i> SERVICES</p><h2 id="services-title">这一趟，怎么搬？</h2></div><p>从几箱行李到一整个家，<br>按你的物品和需要的人手来选。</p></div>
+      <div class="service-grid">
+        <article class="service-card"><img width="764" height="508" src="./assets/packing.webp" loading="lazy" alt="靠窗的搬家纸箱和一卷蓝色封箱胶带"><div class="service-body"><div class="plan-title"><h3>轻装小搬</h3><span><small>¥</small>168 <small>起</small></span></div><p>行李、书和几床被子。适合宿舍或单间换租，一位师傅帮你搬上车。</p><a class="plan-link" href="#estimate" data-plan="light">用此方案估价<svg class="icon"><use href="#i-receipt"/></svg></a></div></article>
+        <article class="service-card"><img width="764" height="508" src="./assets/carrying.webp" loading="lazy" alt="两位穿蓝色工装的搬运师傅合力抬起包好的家具"><div class="service-body"><div class="plan-title"><h3>家庭整搬</h3><span><small>¥</small>368 <small>起</small></span></div><p>家具家电一起走。两位师傅配一辆厢货，大件包护，到家按房间就位。</p><a class="plan-link" href="#estimate" data-plan="family">用此方案估价<svg class="icon"><use href="#i-receipt"/></svg></a></div></article>
+        <article class="service-card"><img width="764" height="508" src="./assets/new-home.webp" loading="lazy" alt="新家客厅里整齐码着纸箱，家具已经归位"><div class="service-body"><div class="plan-title"><h3>打包到家</h3><span><small>¥</small>688 <small>起</small></span></div><p>从橱柜里的杯子到整排衣架。三人上门分区打包，到了新家再一起拆箱。</p><a class="plan-link" href="#estimate" data-plan="full">用此方案估价<svg class="icon"><use href="#i-receipt"/></svg></a></div></article>
+      </div>
+    </section>
+
+    <section class="estimate-section" id="estimate" aria-labelledby="estimate-title">
+      <div class="shell estimate-grid">
+        <div><p class="kicker">费用估算 <i></i> QUICK QUOTE</p><h2 id="estimate-title">先算清楚，再出发。</h2><p class="lede">选好方案、距离和楼梯层数，就能看到这一趟的参考价。</p>
+          <div class="quote-controls">
+            <label class="field"><span>搬家方案</span><select id="plan"><option value="light">轻装小搬</option><option value="family">家庭整搬</option><option value="full">打包到家</option></select></label>
+            <label class="field"><span>两地合计需爬楼层数</span><select id="stairs"><option value="0">全程有电梯 / 平层</option><option value="1">1 层</option><option value="2">2 层</option><option value="3">3 层</option><option value="4">4 层</option><option value="5">5 层</option><option value="6">6 层</option><option value="7">7 层</option><option value="8">8 层</option><option value="9">9 层</option><option value="10">10 层</option></select></label>
+            <label class="range-field" for="km"><span>预计行驶里程</span><output id="km-value" for="km">5 公里</output></label><input type="range" id="km" min="1" max="40" value="5" aria-label="预计行驶里程（公里）">
+            <div class="range-ends"><span>1 公里</span><span>40 公里</span></div>
+          </div>
+        </div>
+        <div class="quote-paper"><div class="paper-top"><b>迁里费用预估单</b><span>ESTIMATE</span></div><div class="paper-price"><span>¥</span><output id="total" for="plan km stairs" aria-live="polite">168</output></div><dl class="price-lines"><div><dt id="base-name">轻装小搬 · 起步价</dt><dd id="base-cost">¥168</dd></div><div><dt>超过 5 公里的里程费</dt><dd id="km-cost">¥0</dd></div><div><dt>楼梯搬运费</dt><dd id="stair-cost">¥0</dd></div></dl><p>起步价含 5 公里。超出部分每公里 ¥6，楼梯每层 ¥20。特殊大件另行确认。</p><span class="barcode" aria-hidden="true"></span></div>
+      </div>
+    </section>
+
+    <section id="process" class="section shell process-section" aria-labelledby="process-title">
+      <div class="section-head"><div><p class="kicker">服务流程 <i></i> HOW WE MOVE</p><h2 id="process-title">每一箱，都有去向。</h2></div><p>你手里和司机车上，各有一份清单。</p></div>
+      <ol class="process-list"><li><b>上门点数</b><p>按房间清点物品，大件单列，零碎物件装箱再记数。</p></li><li><b>分区封箱</b><p>封条上写好房间和箱号。易碎品单独包，标记朝上。</p></li><li><b>专车直送</b><p>装车后再数一遍。司机和你核对同一组箱号就出发。</p></li><li><b id="process-last">对码签收</b><p id="process-caption">在新家逐箱点收；司机回场前，补拍最后一张空车照。</p></li></ol>
+      <div class="faq-grid" id="questions"><div><p class="kicker">搬前须知 <i></i> FAQ</p><h2>常见问题</h2></div><div class="faqs">
+        <details><summary>需要自己提前买纸箱吗？<svg class="icon"><use href="#i-plus"/></svg></summary><p>可以自备。选「打包到家」时，师傅会带纸箱、蓝色封箱胶带和填充材料。书籍建议分成小箱，留出双手能抱稳的重量。</p></details>
+        <details><summary>楼层费怎么算？<svg class="icon"><use href="#i-plus"/></svg></summary><p>只算需要走楼梯的高度。例如从无电梯三楼搬到有电梯的六楼，从三楼到一楼走两层，估价时选「2 层」即可。</p></details>
+        <details><summary>签收后还会留下哪些记录？<svg class="icon"><use href="#i-plus"/></svg></summary><p id="faq-receipt">随车回单保留装车数、收货数和清车照片。碰到没有对应箱号的物品，会另开一张暂存联。</p></details>
+      </div></div>
+    </section>
+
+    <section class="case-section" id="case-file" aria-labelledby="case-title"><div class="shell">
+      <div class="section-head"><div><p class="kicker">搬家实录 <i></i> FIELD NOTES</p><h2 id="case-title">槐荫里的一次两居搬家。</h2></div><span class="job-ref">随车档案 <b>CD–0618</b></span></div>
+      <div class="field-grid">
+        <figure class="field-photo"><img id="case-image" width="764" height="508" src="./assets/loading.webp" loading="lazy" alt="师傅把最后几箱行李推向小区里等候的货车"><figcaption><span id="case-time">09:26</span><span id="case-caption">槐荫里 · 旧址装车</span></figcaption></figure>
+        <div class="field-copy"><p class="case-route"><span>槐荫里</span><i aria-hidden="true"></i><span>梧桐公寓</span></p><h3>一张清单，十八箱生活。</h3><p>六箱书、八箱衣物、四箱厨房用品。客户把易碎品的箱号圈在回单上，师傅把这四箱留到最后装。</p>
+          <div class="case-tabs" aria-label="切换交接照片"><button type="button" data-case="0" aria-pressed="true">装车</button><button type="button" data-case="1" aria-pressed="false">签收</button></div>
+          <blockquote>“杯子一个都没碎。十八箱都点过了，辛苦两位师傅。”<cite>收货人留言 · 16:48</cite></blockquote>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="inspection-section" id="inspection" aria-labelledby="inspection-title"><div class="shell">
+      <div class="section-head"><div><p class="kicker">回场检查 <i></i> RETURN INSPECTION</p><h2 id="inspection-title">还差一张空车照。</h2></div><span class="job-ref">车牌识别号 <b>CD–018</b></span></div>
+      <div class="inspection-grid"><div class="inspection-text"><p class="lede">收货联已经签完。按流程，司机打开后门，给车厢拍了张照片。</p><dl class="count-table"><div><dt>旧址装车</dt><dd>18 <small>箱</small></dd></div><div><dt>新址签收</dt><dd>18 <small>箱</small></dd></div><div><dt>车厢内剩余</dt><dd>01 <small>箱</small></dd></div></dl><p class="driver-note">“封条是我们的。可我装车时，没见过这个箱子。”<span>司机补记 · 18:12</span></p></div>
+        <figure class="evidence"><button class="evidence-image" type="button" data-zoom="inspection" aria-label="放大清车照片"><img src="./assets/inspection.webp" width="764" height="508" loading="lazy" alt="昏暗的货车深处，还有一只用蓝色胶带封好的纸箱"><span class="expand"><svg class="icon"><use href="#i-expand"/></svg></span></button><figcaption><span>车尾相机 / 清车原图</span><b>18:12:04</b></figcaption></figure>
+      </div>
+    </div></section>
+
+    <section class="depot-section" id="depot" aria-labelledby="depot-title"><div class="shell">
+      <p class="kicker">暂存件追踪 <i></i> HOLDING BAY</p><div class="depot-heading"><h2 id="depot-title">第十九箱。</h2><p>多出来的一箱留在车里，等失主来认。<br>夜班交接时，它已经挪到了后门边。</p></div>
+      <div class="depot-grid"><figure class="depot-photo"><img src="./assets/unclaimed.webp" width="764" height="508" loading="lazy" alt="夜间的车厢口立着一只异常高的纸箱，蓝色封条已经松开"><figcaption><span>库区 B · 车尾回拍</span><b>21:46:18</b></figcaption></figure>
+        <div class="hold-ticket"><div class="paper-top"><b>迁里异常件暂存联</b><span>留存联</span></div><strong class="ticket-no"><small>NO.</small> 019</strong><dl><div><dt>关联运单</dt><dd>CD–0618</dd></div><div><dt>原收货人</dt><dd>已确认无遗留</dd></div><div><dt>寄件地址</dt><dd>未填写</dd></div><div><dt>暂存位置</dt><dd>B 区 · 原车</dd></div></dl><p>交班备注：先别开箱。<br>刚才数到三下，声音是从里面传出来的。</p><span class="barcode" aria-hidden="true"></span></div>
+      </div>
+    </div></section>
+
+    <section class="route-gap"><div class="shell gap-inner"><p class="kicker">回单续页 <i></i> DELIVERY UPDATE</p><h2>车没出库。<br>箱子到了。</h2><p>23:17，库区的车闸还是关着的。<br>同一张暂存联下，多出了一组门口机回传。</p><div class="destination"><span>新收件人</span><strong>当前查看回单的人</strong></div></div></section>
+
+    <section id="doorstep" class="cinema" aria-label="第十九箱门口回传">
+      <div class="cinema-screen" aria-hidden="true"><img class="film-image active" src="./assets/landing.webp" loading="lazy" alt=""><img class="film-image" src="./assets/opened.webp" loading="lazy" alt=""><img class="film-image" src="./assets/visitor.webp" loading="lazy" alt=""><img class="film-image final-image" src="./assets/inside.webp" loading="lazy" alt=""><div class="film-glass"></div></div>
+      <div class="camera-controls"><span class="camera-id"><i></i><b id="camera-name">门口机</b><span> / CAM 019</span></span><button class="sound" type="button" aria-pressed="false"><svg class="icon"><use href="#i-mute"/></svg><span>现场声音 · 关</span></button></div>
+      <div class="film-beats">
+        <article class="beat"><img class="fallback-still" src="./assets/landing.webp" width="764" height="508" alt="一幢旧楼的走廊尽头，门边立着库区里的那只箱子" loading="lazy"><div class="beat-copy"><p class="shot-meta">23:17:08 <i></i> 门前送达</p><h2>它就在门外。</h2><p>门口机录到它时，整层楼的感应灯只亮了这一盏。</p></div></article>
+        <article class="beat"><img class="fallback-still" src="./assets/opened.webp" width="764" height="508" alt="箱底已经裂开，一只苍白的手从纸板后面探出来" loading="lazy"><div class="beat-copy"><p class="shot-meta">23:17:11 <i></i> 检测到移动</p><h2>封条从里面断了。</h2><p>刚才敲的是纸板。这三下，敲的是门。</p></div></article>
+        <article class="beat"><img class="fallback-still" src="./assets/visitor.webp" width="1536" height="1024" alt="门外的人从破箱旁折过身来，一只睁着的眼睛贴近了镜头" loading="lazy"><div class="beat-copy"><p class="shot-meta">23:17:14 <i></i> 门外留言</p><h2>“我听见你了。”</h2><p>它把脸贴在门上。门一直锁着。</p></div></article>
+        <article class="beat final-beat" id="receipt"><img class="fallback-still" src="./assets/inside.webp" width="1536" height="1024" alt="镜头落在屋内的桌子底下。门还锁着，那个本该在门外的东西已经贴着地板爬到了眼前" loading="lazy"><div class="beat-copy"><p class="shot-meta"><time class="local-clock">--:--:--</time><i></i> 屋内信号</p><h2>“不用开门了。”</h2><p>第 019 件已入户。最后一张签收照，是从屋里拍的。</p><div class="end-actions"><a class="button end-return" href="#top">返回服务首页</a><button class="reset-link" type="button" data-replay>重新体验</button></div></div></article>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span class="footer-brand"><i class="footer-mark">//</i> 迁里搬家 <b>MILEMOVE</b></span><span id="footer-state">同城搬运 · 随车回单</span><a href="#top">回到页首</a></div></footer>
+  <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title"><div><b id="lightbox-title">车尾相机 · 清车原图</b><button type="button" class="dialog-close" aria-label="关闭原图">关闭</button></div><img src="./assets/inspection.webp" width="764" height="508" alt="空车检查原图，车厢地板上留着一只蓝胶带纸箱"></dialog>
+</body>
+</html>
