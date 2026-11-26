@@ -258,9 +258,14 @@ const cinema = get("doorstep");
 const beats = [...cinema.querySelectorAll(".beat")];
 const stills = [...cinema.querySelectorAll(".film-image")];
 let framePending = false;
+let restarting = false;
 document.body.classList.add("film-ready");
 function syncView() {
   framePending = false;
+  if (restarting) {
+    if (window.scrollY > 2 || cinema.getBoundingClientRect().top < window.innerHeight) return;
+    restarting = false;
+  }
   const headerHeight = header.offsetHeight;
   header.classList.toggle("night", get("depot").getBoundingClientRect().top < headerHeight + 12);
   const bounds = cinema.getBoundingClientRect();
@@ -304,8 +309,14 @@ document.addEventListener("visibilitychange", syncVisibility);
 syncVisibility();
 
 function replay() {
+  restarting = true;
   wantsSound = false;
   lastSoundBeat = -1;
+  inCinema = false;
+  selectedBeat = -1;
+  syncSound();
+  stills.forEach((image, i) => image.classList.toggle("active", i === 0));
+  get("camera-name").textContent = "门口机";
   soundLabel();
   setReturned(false);
   rememberEnding(false);
@@ -318,9 +329,15 @@ function replay() {
   closeMenu();
   if (location.hash) history.replaceState(null, "", location.pathname + location.search);
   documentRoot.style.scrollBehavior = "auto";
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   get("hero-cta").focus({ preventScroll: true });
-  syncView();
-  requestAnimationFrame(() => { documentRoot.style.scrollBehavior = ""; });
+  // Let the jump and any pending smooth navigation settle before re-arming the ending.
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    requestAnimationFrame(() => {
+      documentRoot.style.scrollBehavior = "";
+      syncView();
+    });
+  });
 }
 document.querySelectorAll("[data-replay]").forEach((button) => button.addEventListener("click", replay));

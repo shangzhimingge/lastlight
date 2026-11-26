@@ -220,7 +220,8 @@ input[type="range"] { width: 100%; margin: 0; grid-column: 1/-1; height: 1.3rem;
   .film-image.active { opacity: 1; }
   .film-image.final-image { transition-duration: .18s; }
   .film-glass { background: linear-gradient(90deg, #05090694, transparent 54%), linear-gradient(0deg, #060907d6 0%, #090d0845 26%, transparent 52%); }
-  .film-ready .fallback-still, .film-ready .beat::after { display: none; }
+  .film-ready .fallback-still { width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+  .film-ready .beat::after { display: none; }
 }
 .film-image.final-image, .final-beat .fallback-still { object-position: 65% 49%; }
 footer { background: #111713; color: #bac1b5; font-size: .79rem; }
